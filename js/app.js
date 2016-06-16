@@ -60,6 +60,30 @@ var surfSpots = [
   }
 ]
 
+var Spot = function(data) {
+  this.name = ko.observable(data.name);
+  this.latitude = ko.observable(data.latitude);
+  this.longitude = ko.observable(data.longitude);
+};
+
+var ViewModel = function() {
+  var self = this;
+
+  this.spotList = ko.observableArray([]);
+
+  surfSpots.forEach(function(beach) {
+    self.spotList.push( new Spot(beach) );
+  });
+
+  this.currentSpot = ko.observable( this.spotList()[0] );
+
+  this.setSpot = function(clickedSpot) {
+    self.currentSpot(clickedSpot);
+  };
+};
+
+ko.applyBindings(new ViewModel());
+
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
