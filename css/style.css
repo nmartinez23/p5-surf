@@ -16,8 +16,16 @@ hr {
   background-color: #8cb;
 }
 
+li {
+  font-size: 20px;
+}
+
 #map {
-  height: 100%;
+  height: 70%;
+}
+
+#footer {
+  text-align: center;
 }
 
 .text-muted {
