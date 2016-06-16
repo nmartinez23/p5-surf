@@ -4,6 +4,35 @@ html, body {
   padding: 0;
 }
 
+body {
+  font-family: "Lato", sans-serif;
+  color: #110d90;
+  font-weight: 300;
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background-color: #8cb;
+}
+
 #map {
   height: 100%;
+}
+
+.text-muted {
+    color: #110d90;
+}
+
+.text-thin {
+    font-weight: 100;
+}
+
+.title-super {
+    font-size: 60px;
+}
+
+.title-logo {
+    margin-top: 20px;
+    width: 25%;
 }
