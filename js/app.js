@@ -95,14 +95,54 @@ var ViewModel = function() {
 
 var map;
 var marker;
-var infoWindow;
+// var infoWindow = new google.maps.InfoWindow();
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 37.773972, lng: -122.431297},
+    center: {lat: 37.563, lng: -122.3255},
     zoom: 8
   });
 }
 
+// function loadData() {
+
+//   var $body = $('body');
+//   var $wikiElem = $('#wikipedia-links');
+
+//   // clear out old data before new request
+//   $wikiElem.text("");
+
+//   // Wikipedia AJAX request here
+//   var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + this.name +
+//     '&format=json&callback=wikiCallback';
+
+//   var wikiRequestTimeout = setTimeout(function() {
+//     $wikiElem.text("failed to get wikipedia resources");
+//   }, 4000);
+
+//   $.ajax({
+//     url: wikiUrl,
+//     dataType: "jsonp",
+//     // jsonp: "callback",
+//     success: function( response ) {
+//       var articleList = response[1];
+
+//       for (var i = 0; i < articleList.length; i++) {
+//         articleStr = articleList[i];
+//         var url = 'http://en.wikipedia.org/wiki' + articleStr;
+//         $wikiElem.append('<li><a href="' + url + '">' +
+//           articleStr + '</a></li>');
+//       };
+
+//       clearTimeout(wikiRequestTimeout);
+//     }
+//   });
+
+//   return false;
+// };
+
+// $('#form-container').submit(loadData);
+
 ko.applyBindings(new ViewModel());
+
 

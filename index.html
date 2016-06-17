@@ -33,6 +33,12 @@
             <!-- display Map here -->
             <div class="list col-md-4">
                 <h2>list goes here</h2>
+
+                <form id="form-container" class="form-container">
+                    <label for="spot">Surf Spot: </label><input type="text" id="spot" value="">
+                    <button id="search-btn">Search</button>
+                </form>
+
                 <ul data-bind="foreach: spotList">
                     <li data-bind="text: name, click: $parent.setSpot"></li>
                 </ul>
@@ -58,6 +64,8 @@
             </div>
         </div>
     </div>
+
+    <!-- <h3 id="wikipedia-header">Relevant Wikipedia Links</h3> -->
 
     <div id="map"></div>
 
