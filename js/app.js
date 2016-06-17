@@ -2,19 +2,22 @@ var surfSpots = [
   {
     name : 'Linda Mar Beach',
     latitude : '37.5867531',
-    longitude : '-122.4919432'
+    longitude : '-122.4919432',
+    mark : ''
   },
 
   {
     name : 'Rockaway Beach',
     latitude : '37.6059876',
-    longitude : '-122.4917772'
+    longitude : '-122.4917772',
+    mark : ''
   },
 
   {
     name : 'Ocean Beach',
     latitude : '37.774',
-    longitude : '-122.5125'
+    longitude : '-122.5125',
+    mark : ''
   },
 
   {
