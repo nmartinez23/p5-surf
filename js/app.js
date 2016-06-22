@@ -1,72 +1,88 @@
+var map;
+var marker;
+// var infoWindow = new google.maps.InfoWindow();
+
+function initMap() {
+  console.log('initMap');
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 37.563, lng: -122.3255},
+    zoom: 8
+  });
+
+  myViewModel = new ViewModel(); 
+  ko.applyBindings(myViewModel);
+  console.log(myViewModel.spotList());
+}
+
 var surfSpots = [
   {
     name : 'Linda Mar Beach',
     latitude : '37.5867531',
     longitude : '-122.4919432',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Rockaway Beach',
     latitude : '37.6059876',
     longitude : '-122.4917772',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Ocean Beach',
     latitude : '37.774',
     longitude : '-122.5125',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Mavericks',
     latitude : '37.497882',
     longitude : '-122.498801',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Fort Point',
     latitude : '37.8088047',
     longitude : '-122.4721241',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Stinson Beach',
     latitude : '37.9004',
     longitude : '-122.6444',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Steamer Lane',
     latitude : '36.9538399',
     longitude : '-122.0241292',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Cowells Cove',
     latitude : '36.9624806',
     longitude : '-122.0240314',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Bolinas',
     latitude : '37.9093',
     longitude : '-122.6863',
-    mark : ''
+    marker : ''
   },
 
   {
     name : 'Montara',
     latitude : '37.5469',
     longitude : '-122.5149',
-    mark : ''
+    marker : ''
   }
 ]
 
@@ -74,10 +90,11 @@ var Spot = function(data) {
   this.name = ko.observable(data.name);
   this.latitude = ko.observable(data.latitude);
   this.longitude = ko.observable(data.longitude);
-  this.mark = '';
+  this.marker = ko.observable(data.marker);
 };
 
 var ViewModel = function() {
+  console.log('ViewModel');
   var self = this;
 
   this.spotList = ko.observableArray([]);
@@ -85,6 +102,10 @@ var ViewModel = function() {
   surfSpots.forEach(function(beach) {
     self.spotList.push( new Spot(beach) );
   });
+
+  this.spotList().forEach(function(beach) {
+      console.log(beach); // put markers here
+    });
 
   this.currentSpot = ko.observable( this.spotList()[0] );
 
@@ -133,18 +154,7 @@ var ViewModel = function() {
 
 };
 
-  var map;
-  var marker;
-  // var infoWindow = new google.maps.InfoWindow();
+var myViewModel;
 
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 37.563, lng: -122.3255},
-      zoom: 8
-    });
-  }
-
-
-ko.applyBindings(new ViewModel());
 
 
