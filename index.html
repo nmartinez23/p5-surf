@@ -10,27 +10,24 @@
 </head>
 <body>
     <div class="container">
-        <!-- Create a place to put the map in the HTML-->
-        <div id="map"></div>
-
         <!-- Create box to contain all text and searchbox to the left of the map-->
         <div class="options-box">
-            <h1>Bay Area Surf Spots</h1>
-            <hr>
-            <div class="searchbox">
+            <h1 class="flex-box">Bay Area Surf Spots</h1>
+            <div id="searchbox" class="flex-box">
                 <!-- Bind the filter observable to the searchbox -->
-                <input id="search" type="search" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Enter your favorite surf spot!" autocomplete="off">
+                <input class="search" type="search" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Enter your favorite surf spot!" autocomplete="off">
             </div>
             <!-- Bind the spotsFilter function to the list of spots -->
-            <ul id="list" data-bind="template: {locations:'name', foreach:spotsFilter}, value: self.spotsFilter">
+            <ul id="list" class="flex-box" data-bind="template: {locations:'name', foreach:spotsFilter}, value: self.spotsFilter">
                 <li>
                     <a id="spots" data-bind="text:name, click: $root.openMarker"></a>
                 </li>
             </ul>
-
-            <footer id="footer">This is a Udacity project completed by <br><a href="http://github.com/nmartinez23">Nick Martinez - Github Profile</a></footer>
         </div>
     </div>
+
+    <!-- Create a place to put the map in the HTML-->
+    <div id="map"></div>
 
     <!-- error function should alert if the map does not load for user -->
     <script>

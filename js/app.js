@@ -17,18 +17,12 @@ var locations = [
   {name: 'Montara', address: '8150 Cabrillo Highway, Montara Beach, CA 94037', latitude: 37.5469, longitude: -122.5149}
 ];
 
-var Spot = function(data) {
-  this.name = ko.observable(data.name);
-  this.latitude = ko.observable(data.latitude);
-  this.longitude = ko.observable(data.longitude);
-};
-
 function initMap() {
   // Put the ViewModel inside the initMap function
   var ViewModel = function() {
     // Create the map displaying the San Francisco Bay Area
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 37.563, lng: -122.3255},
+      center: {lat: 37.2552, lng: -122.383},
       zoom: 9
     });
 
@@ -64,7 +58,11 @@ function initMap() {
       infoWindow = new google.maps.InfoWindow();
 
       google.maps.event.addListener(beach.marker, 'click', function() {
-        var wiki = "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + beach.name + "&limit=1&redirects=return&format=json"
+        var wiki = "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + beach.name + "&limit=1&redirects=return&format=json";
+
+        var wikiTimeout = setTimeout(function() {
+          alert("failed to get wikipedia resources");
+        }, 2000);
 
         var display;
           // Set Ajax for Wikipedia API to display information and links in the infowindows
@@ -77,17 +75,18 @@ function initMap() {
               for (var i = 0; i < articles.length; i++) {
                 wikiArticle = articles[i];
                 var url = 'http://en.wikipedia.org/wiki/' + wikiArticle;
-                display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + response[2] + '</p>' + '<a href=" ' + url + '">' + url + '</a>' + '</div>'
+                display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + response[2] + '</p>' + '<a href=" ' + url + '">' + url + '</a>' + '</div>';
                 infoWindow.setContent(display);
               }
             } else {
-              display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + 'There are no Wikipedia articles at this time'+ '</p>' + '</div>'
+              display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + 'There are no Wikipedia articles at this time'+ '</p>' + '</div>';
               infoWindow.setContent(display);
             }
+            clearTimeout(wikiTimeout);
           }
           // Error message to user if the connection fails
         }).error(function(e){
-          display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + 'Sorry, not able to connect to Wikipedia at this time'+ '</p>' + '</div>'
+          display = '<div id="info">' + beaches + '<p>' + locations + '</p>' + '<p>' + 'Sorry, not able to connect to Wikipedia at this time'+ '</p>' + '</div>';
           infoWindow.setContent(display);
           });
         infoWindow.open(map, this);
@@ -123,13 +122,13 @@ function initMap() {
         return self.markers();
       } else {
         return ko.utils.arrayFilter(self.markers(), function(beach) {
-          filterCheck = filterList(beach.name.toLowerCase(), filter);
+          filterCheck = beach.name.toLowerCase().indexOf(filter.toLowerCase()) > -1;
             if (filterCheck) {
               beach.marker.setVisible(true);
-              return filterCheck
+              return filterCheck;
             } else {
               beach.marker.setVisible(false);
-              return filterCheck
+              return filterCheck;
             }
         });
       }
@@ -137,4 +136,4 @@ function initMap() {
   };
 
 ko.applyBindings(new ViewModel());
-};
+}
