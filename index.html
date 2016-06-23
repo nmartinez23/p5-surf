@@ -6,77 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bay Area Surf Spots</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <!-- top row with logo on the left. Header to the right -->
-            <div class="logo col-md-4">
-                <img class="title-logo" src="images/surfboards.svg" alt="surfboards logo">
+        <!-- Create a place to put the map in the HTML-->
+        <div id="map"></div>
+
+        <!-- Create box to contain all text and searchbox to the left of the map-->
+        <div class="options-box">
+            <h1>Bay Area Surf Spots</h1>
+            <hr>
+            <div class="searchbox">
+                <!-- Bind the filter observable to the searchbox -->
+                <input id="search" type="search" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Enter your favorite surf spot!" autocomplete="off">
             </div>
+            <!-- Bind the spotsFilter function to the list of spots -->
+            <ul id="list" data-bind="template: {locations:'name', foreach:spotsFilter}, value: self.spotsFilter">
+                <li>
+                    <a id="spots" data-bind="text:name, click: $root.openMarker"></a>
+                </li>
+            </ul>
 
-            <div class="header col-md-8 text-right text-uppercase">
-                <h1 class="title-super text-thin">Bay Area Surf Spots</h1>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="hr col-md-12">
-                <hr>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- display Map here -->
-            <div class="list col-md-4">
-                <h2>list goes here</h2>
-
-                <form id="form-container" class="form-container">
-                    <label for="spot">Surf Spot: </label><input data-bind="value: name">
-                    <!-- <label for="spot">Surf Spot: </label><input type="text" id="spot" value=""> -->
-                    <button id="search-btn">Search</button>
-                </form>
-
-                <ul data-bind="foreach: spotList">
-                    <li data-bind="text: name, click: $parent.setSpot"></li>
-                </ul>
-                <div data-bind="with:currentSpot">
-
-                <h2 data-bind="text: name"></h2>
-                <!-- <h3 data-bind=""></h3> -->
-                <div data-bind=""></div>
-                <!-- <img src="" alt="" data-bind="">
-                <div>
-                    <h3></h3>
-                    <ul data-bind="">
-                        <li data-bind=""></li>
-                    </ul>
-                </div> -->
-
-                </div>
-
-            </div>
-            <div class="map col-md-8">
-                <h2>map goes here</h2>
-                <!-- <div id="map"></div> -->
-            </div>
+            <footer id="footer">This is a Udacity project completed by <br><a href="http://github.com/nmartinez23">Nick Martinez - Github Profile</a></footer>
         </div>
     </div>
 
-    <!-- <h3 id="wikipedia-header">Relevant Wikipedia Links</h3> -->
-
-    <div id="map"></div>
-
-    <br><br>
-
-
-    <footer id="footer">This is a Udacity project completed by <a href="http://github.com/nmartinez23">Nick Martinez - Github Profile</a></footer>
-
-    <br><br>
-
+    <!-- error function should alert if the map does not load for user -->
     <script>
         function error() {
             alert("Map did not load, please refresh");
@@ -85,7 +41,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
     <script src="js/app.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap" onerror="error()"></script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyA8pvBsOpisUIs2ltMgbSS0SDVX832Xiyc&v=3&callback=initMap" onerror="error()"></script>
 </body>
 </html>
