@@ -17,6 +17,7 @@
                 <!-- Bind the filter observable to the searchbox -->
                 <input class="search" type="search" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Enter your favorite surf spot!" autocomplete="off">
             </div>
+
             <!-- Bind the spotsFilter function to the list of spots -->
             <ul id="list" class="flex-box" data-bind="template: {locations:'name', foreach:spotsFilter}, value: self.spotsFilter">
                 <li>
