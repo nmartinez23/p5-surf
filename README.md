@@ -1,4 +1,6 @@
-## Udacity Project Neighborhood Map - Bay Area Surf Spots
+# Udacity Project Neighborhood Map
+
+## Bay Area Surf Spots
 
 You can clone, fork or download the Zip file and then open the index.html file in your browser. Click on one of the beach names on the list or click on one of the map markers to see more information about the surf spot. You can also use the search box which will quickly help to filter for the beach you are searching for. 
 
