@@ -10,9 +10,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Create box to contain all text and searchbox to the left of the map-->
+        <!-- Create box to contain all text and searchbox -->
         <div class="options-box">
             <h1 class="flex-box">Bay Area Surf Spots</h1>
+            <div id="surfboard-box" class="flex-box">
+                <img id="surfboard" src="images/surfboards.svg">
+            </div>
             <div id="searchbox" class="flex-box">
                 <!-- Bind the filter observable to the searchbox -->
                 <input class="search" type="search" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Enter your favorite surf spot!" autocomplete="off">

@@ -27,7 +27,8 @@ function initMap() {
     });
 
     var self = this;
-    // Set markers to an observable array of locations and loop through array to set up animated markers and infowindows
+    // Set markers to an observable array of locations and loop through array
+    // to set up animated markers and infowindows
     self.markers = ko.observableArray(locations);
 
     self.markers().forEach(function(beach) {

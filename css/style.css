@@ -1,8 +1,7 @@
 html,
 body {
   height: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
 }
 
 body {
@@ -15,8 +14,12 @@ li {
   font-size: 20px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .search {
-  width: 60%;
+  width: 50%;
 }
 
 .flex-box {
@@ -28,12 +31,14 @@ li {
   padding: 10px;
 }
 
-ul {
-  list-style-type: none;
-}
-
 #map {
   height: 100%;
   position: relative;
   overflow: hidden;
 }
+
+#surfboard {
+  height: 10%;
+  width: 10%;
+}
+
